@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{object.username}}{% endblock %}
+
+{% block content %}
+<h2>{% trans "Account" %}</h2>
+<h4>{% trans "user" %}: {{object.username}}</h4>
+<p>{% trans "first name" %}: {{object.first_name}}</p>
+<p>{% trans "last name" %}: {{object.last_name}}</p>
+<p>{% trans "about" %}: {{object.profile.about}}</p>
+{% endblock %}

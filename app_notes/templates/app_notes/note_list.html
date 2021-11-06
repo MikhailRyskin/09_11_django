@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "notes" %}{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    <h3>{% trans "Welcome to the site" %} {{request.user.first_name}}</h3>
+    <a href="{% url 'logout' %}">{% trans "log out" %}</a>
+{% else %}
+    <h3>{% trans "You are not logged in." %}</h3>
+    <a href="{% url 'login' %}">{% trans "login" %}</a>
+{% endif %}
+{% if notes %}
+<ul>
+{% for note in notes %}
+  <li>
+    <p>{{note.user.username}}</p>
+    <p>{{note.text}}</p>
+    <a href="{% url 'note_detail' pk=note.id %}">{% trans "more detail..." %}</a>
+  </li>
+{% endfor %}
+</ul>
+{% else %}
+    <p>{% trans "No notes" %}</p>
+{% endif %}
+{% endblock %}

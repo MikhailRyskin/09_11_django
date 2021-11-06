@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "note" %}{% endblock %}
+
+{% block content %}
+<h3>{% trans "note" %}</h3>
+<p>{{ note.text}}</p>
+{% for img in images %}
+<img src="{{img.image.url}}"
+     width="150" height="150" alt="photo">
+{% endfor %}
+<a href="{% url 'notes' %}">{% trans "back to notes" %}</a>
+{% endblock %}
